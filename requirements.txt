@@ -1,0 +1,15 @@
+# Backend Dependencies
+Flask>=2.0
+Flask-CORS>=3.0
+Werkzeug>=2.0 # For secure_filename, usually comes with Flask
+numpy>=1.20
+scipy>=1.7
+pandas>=1.3
+astroquery>=0.4 # Check latest stable version
+# Optional (uncomment if used & installed)
+# PyYAML>=5.4 # For config loading in analysis.importer
+# joblib>=1.0 # For ML model loading
+# waitress>=2.0 # For production server
+# scikit-learn # If implementing ML models
+
+# Add other direct dependencies here

@@ -1,0 +1,86 @@
+
+/* frontend/src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Basic Sci-Fi Theme Foundation (Customize heavily later!) */
+body {
+  @apply bg-gray-900 text-gray-200 font-mono overflow-hidden; /* Dark background, light mono font, prevent body scroll */
+  /* Consider adding a subtle background pattern or gradient */
+}
+
+/* Input/Select Styling */
+input[type="text"],
+input[type="number"],
+input[type="file"]::file-selector-button, /* Style the button part of file input */
+select,
+textarea {
+    @apply block w-full px-3 py-1.5 text-base font-normal text-gray-200 bg-gray-700 bg-clip-padding border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-100 focus:bg-gray-600 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500;
+}
+
+/* Label Styling */
+label {
+    @apply block mb-1 text-sm font-medium text-gray-400;
+}
+
+/* Button Styling */
+.btn {
+  @apply inline-block px-4 py-2 rounded shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 transition duration-150 ease-in-out font-medium text-sm leading-snug uppercase disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-primary {
+  @apply bg-cyan-600 hover:bg-cyan-500 active:bg-cyan-700 text-white focus:ring-cyan-400 shadow-cyan-500/50 hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-gray-600 hover:bg-gray-500 active:bg-gray-700 text-gray-100 focus:ring-gray-400 shadow-gray-500/30 hover:shadow-md;
+}
+
+.btn-danger {
+    @apply bg-red-700 hover:bg-red-600 active:bg-red-800 text-white focus:ring-red-500 shadow-red-500/50 hover:shadow-lg;
+}
+
+/* Panel Styling */
+.panel {
+  @apply bg-gray-800 border border-gray-700 rounded-md shadow-lg p-3; /* Adjusted padding */
+}
+
+/* Scrollbar Styling (Webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1f2937; /* gray-800 */
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #4b5563; /* gray-600 */
+  border-radius: 4px;
+  border: 2px solid #1f2937; /* gray-800 - Creates padding effect */
+}
+::-webkit-scrollbar-thumb:hover {
+   background-color: #6b7280; /* gray-500 */
+}
+/* Consider adding Firefox scrollbar styles if needed */
+/* * { scrollbar-width: thin; scrollbar-color: #4b5563 #1f2937; } */
+
+
+/* Plotly Dark Theme Adjustments */
+.plotly .plot-container {
+    background-color: transparent !important;
+}
+.plotly .xaxislayer-above, .plotly .yaxislayer-above {
+    /* Adjust if grid lines overlap strangely */
+}
+.plotly .legend .bg {
+    /* Ensure legend background respects theme */
+    fill: rgba(31, 41, 55, 0.8) !important; /* gray-800/80 */
+    stroke: rgba(75, 85, 99, 0.5) !important; /* gray-600/50 */
+    stroke-width: 1px !important;
+}
+.plotly .legendtext {
+    fill: rgb(229, 231, 235) !important; /* gray-200 */
+}
+/* Add more specific Plotly overrides here as needed */
