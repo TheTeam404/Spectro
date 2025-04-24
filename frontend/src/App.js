@@ -72,11 +72,14 @@ function App() {
 
     const handleFindPeaks = useCallback(async (params) => {
         const result = await handleApiCall(api.findPeaks, params, 'Finding peaks');
-        if (result?.status === 'success' && result?.data?.peaks !== undefined) { // Check for peaks array explicitly
+        if (result?.status === 'success' && result?.data?.peaks !== undefined) {
+            console.log("Setting peaksData state with:", result.data.peaks); // Check for peaks array explicitly
             setPeaksData(result.data.peaks);
             setFitResults(null); setSelectedPeakIndex(null); // Clear downstream
             setRoiHighlight(null);
         }
+        else {
+            console.log("Not setting peaksData state.");}
     }, [handleApiCall]);
 
      const handleFitPeaks = useCallback(async (params) => {

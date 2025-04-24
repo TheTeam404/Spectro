@@ -23,7 +23,7 @@ def find_peaks_simple(data: pd.DataFrame, params: Optional[Dict[str, Any]] = Non
     log.debug(f"Intensity array length: {len(intensities)}")
     if len(intensities) > 0:
         log.debug(f"Intensity stats: min={np.min(intensities):.2f}, max={np.max(intensities):.2f}, mean={np.mean(intensities):.2f}, std={np.std(intensities):.2f}")
-    try: 
+    try:
         peak_indices, properties = scipy_find_peaks(intensities, **find_peaks_args)
         log.info(f"SCIPY Found {len(peak_indices)} indices: {peak_indices}")
         log.debug(f"SCIPY properties: {properties}")

@@ -12,6 +12,7 @@ const PlotDisplay = ({
     baselineData, // Optional { wavelength: [], intensity: [] }
     roiHighlight, // Optional { startWl: number, endWl: number }
 }) => {
+    console.log("PlotDisplay received peaksData:", peaksData);
     const plotRef = useRef(null); // Ref to access Plotly instance
 
     // Define Sci-Fi Colors (Consider moving to a theme file)
@@ -30,6 +31,7 @@ const PlotDisplay = ({
 
     // --- Generate Plot Traces ---
     const plotData = useMemo(() => {
+        console.log("PlotDisplay useMemo running. peaksData:", peaksData);
         const traces = [];
 
         // 1. Spectrum Trace
@@ -59,17 +61,27 @@ const PlotDisplay = ({
         }
 
         // 3. Peaks Trace
-        if (peaksData?.length > 0) { // Check if peaksData exists and has items
+        if (peaksData?.length > 0) { 
+            console.log(`PlotDisplay adding peaks trace with ${peaksData.length} peaks.`);// Check if peaksData exists and has items
             traces.push({
                 x: peaksData.map(p => p.wavelength), // Maps wavelength from each peak object
                 y: peaksData.map(p => p.intensity),  // Maps intensity from each peak object
                 type: 'scattergl',
                 mode: 'markers',
                 name: 'Peaks',
-                marker: { color: sciFiColors.peaks, size: 8, symbol: 'cross-thin-open' },
+                marker: { 
+                    color: 'rgba(255, 0, 0, 0.8)', // Red color with some transparency
+                    size: 6, // Adjust size as needed
+                    symbol: 'circle', // Use 'circle' for a dot
+                    line: { // Optional outline for the dot
+                        width: 1,
+                        color: 'rgba(200, 0, 0, 0.9)' }}+0,
                 customdata: peaksData.map(p => p.index), // Store original index for clicking
                 hovertemplate: 'W: %{x:.3f}<br>I: %{y:.1f}<br>Index: %{customdata}<extra></extra>',
             });
+        }
+        else{
+            console.log("PlotDisplay NOT adding peaks trace (peaksData empty or null).");
         }
 
         // 4. Fit Traces (using data from backend)
